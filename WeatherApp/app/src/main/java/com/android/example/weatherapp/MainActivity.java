@@ -1,9 +1,12 @@
 package com.android.example.weatherapp;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -25,7 +28,26 @@ public class MainActivity extends AppCompatActivity {
     private TextView parseDataText;
     private Button parseData;
     private Button showDB;
-    private SQLiteDatabase db;
+    public static SQLiteDatabase db;
+    public static String url = "https://api.apixu.com/v1/forecast.json?key=133c08ba181244bf928111545181210&q=Omsk&days=10";
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        Intent intent;
+        switch(id){
+            case R.id.service_settings:
+                intent = new Intent(this, ServiceActivity.class);
+                startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +65,6 @@ public class MainActivity extends AppCompatActivity {
         parseData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String url = "https://api.apixu.com/v1/forecast.json?key=133c08ba181244bf928111545181210&q=Omsk&days=3";
-
                 JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                     new Response.Listener<JSONObject>() {
                         @Override
@@ -123,4 +143,5 @@ public class MainActivity extends AppCompatActivity {
         });
         //db.close();
     }
+
 }

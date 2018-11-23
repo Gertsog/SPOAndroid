@@ -18,6 +18,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ServiceActivity"
+            android:label="Service Settings" />
+
+        <service android:name=".MyService" />
     </application>
 
 </manifest>
