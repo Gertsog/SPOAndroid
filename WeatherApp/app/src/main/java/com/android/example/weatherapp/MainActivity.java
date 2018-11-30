@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private Button parseData;
     private Button showDB;
     public static SQLiteDatabase db;
-    public static String url = "https://api.apixu.com/v1/forecast.json?key=133c08ba181244bf928111545181210&q=Omsk&days=10";
+    public static String url = "https://api.apixu.com/v1/forecast.json?key=133c08ba181244bf928111545181210&q=Omsk&days="+3;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
