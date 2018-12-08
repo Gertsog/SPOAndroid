@@ -36,9 +36,7 @@ public class MyService extends Service {
     int i = 0;
     boolean shouldContinue = true;
 
-    public void onCreate() {
-        super.onCreate();
-    }
+    public void onCreate() {super.onCreate();}
 
     public void onDestroy() {
         shouldContinue = false;
@@ -107,7 +105,8 @@ public class MyService extends Service {
                         JSONObject condition = day.getJSONObject("condition");
                         String text = condition.getString("text");
                         if (date != null){
-                            db.execSQL("INSERT INTO weather VALUES ('" + city + "','" + date + "'," + temp + "," + wind + "," + humidity + ",'" + text + "');");
+                            db.execSQL("INSERT INTO weather VALUES ('" + city + "','" + date +
+                                    "'," + temp + "," + wind + "," + humidity + ",'" + text + "');");
                             pContent = (date + " temp: " + temp);
                         }
                     } catch (JSONException e) {
